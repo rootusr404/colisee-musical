@@ -31,7 +31,7 @@ export default function DashboardPage() {
     <div className="min-h-screen bg-zinc-950 text-white">
       {/* Barre de navigation */}
       <header className="border-b border-zinc-800 px-6 py-4 flex items-center justify-between">
-        <span className="font-bold text-lg tracking-tight text-violet-400">Colisée Musical</span>
+        <span className="font-bold text-lg tracking-tight text-violet-400">Tatami</span>
         <button
           onClick={handleSignOut}
           className="text-sm text-zinc-400 hover:text-white transition"

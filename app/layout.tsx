@@ -13,8 +13,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Colisée Musical",
-  description: "La plateforme de battles musicales en ligne",
+  title: "Tatami",
+  description: "Monte sur le tatami. La plateforme de battles musicales en ligne.",
 };
 
 export default function RootLayout({

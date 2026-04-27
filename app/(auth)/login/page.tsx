@@ -33,7 +33,7 @@ export default function LoginPage() {
     <div className="bg-zinc-900 border border-zinc-800 rounded-2xl p-8 shadow-2xl">
       {/* En-tête */}
       <div className="mb-8 text-center">
-        <h1 className="text-2xl font-bold text-white tracking-tight">Colisée Musical</h1>
+        <h1 className="text-2xl font-bold text-white tracking-tight">Tatami</h1>
         <p className="text-zinc-400 text-sm mt-1">Connecte-toi à ton compte</p>
       </div>
 

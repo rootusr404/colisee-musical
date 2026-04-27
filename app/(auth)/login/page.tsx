@@ -23,9 +23,7 @@ export default function LoginPage() {
       setError(error.message)
       setLoading(false)
     } else {
-      // Redirection vers le dashboard après connexion réussie
       router.push('/dashboard')
-      router.refresh() // force Next.js à relire la session côté serveur
     }
   }
 

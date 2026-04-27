@@ -10,13 +10,18 @@ export default function DashboardPage() {
   const [user, setUser] = useState<User | null>(null)
 
   useEffect(() => {
-    supabase.auth.getUser().then(({ data }) => {
-      if (!data.user) {
+    // onAuthStateChange se déclenche immédiatement avec la session existante
+    // puis à chaque changement (connexion, déconnexion, expiration)
+    const { data: { subscription } } = supabase.auth.onAuthStateChange((_event, session) => {
+      if (!session) {
         router.push('/login')
       } else {
-        setUser(data.user)
+        setUser(session.user)
       }
     })
+
+    // Nettoyage de l'écouteur quand le composant est démonté
+    return () => subscription.unsubscribe()
   }, [router])
 
   const handleSignOut = async () => {

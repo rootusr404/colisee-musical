@@ -8,6 +8,7 @@ import type { User } from '@supabase/supabase-js'
 export default function DashboardPage() {
   const router = useRouter()
   const [user, setUser] = useState<User | null>(null)
+  const [username, setUsername] = useState<string | null>(null)
 
   useEffect(() => {
     // onAuthStateChange se déclenche immédiatement avec la session existante
@@ -17,6 +18,13 @@ export default function DashboardPage() {
         router.push('/login')
       } else {
         setUser(session.user)
+        // Récupère le pseudo depuis la table profiles
+        supabase
+          .from('profiles')
+          .select('username')
+          .eq('id', session.user.id)
+          .single()
+          .then(({ data }) => setUsername(data?.username ?? null))
       }
     })
 
@@ -48,7 +56,7 @@ export default function DashboardPage() {
       {/* Contenu principal */}
       <main className="max-w-4xl mx-auto px-6 py-12">
         <h1 className="text-3xl font-bold mb-2">Tableau de bord</h1>
-        <p className="text-zinc-400 mb-10">Bienvenue, {user.email}</p>
+        <p className="text-zinc-400 mb-10">Bienvenue, <span className="text-white font-semibold">{username ?? user.email}</span></p>
 
         {/* Grille de sections — sera remplie au Sprint 2 */}
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
